@@ -40,8 +40,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: ${{ runner.os }}-buildx-${{ github.ref }}
           restore-keys: |
+            ${{ runner.os }}-buildx-${{ github.ref }}
             ${{ runner.os }}-buildx-
 
       - name: Build and push
@@ -54,7 +55,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
 
-      - name: Move cache # Prevent cache from growing
+      - name: Move cache # Prevent cache from growing in size.
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
