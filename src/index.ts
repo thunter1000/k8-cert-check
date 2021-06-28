@@ -1,1 +1,1 @@
-console.info('// Starting point');
+console.info('// Starting point')
