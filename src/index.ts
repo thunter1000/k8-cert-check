@@ -1,9 +1,11 @@
-import {getIngresses} from './api/k8s/k8s'
+import {listIngresses} from './api/k8s/k8s'
 
 console.info('// Starting point')
-getIngresses().then(ingresses => {
-  console.info(
-    'Installed ingresses',
-    ingresses.map(i => i.spec.rules.flatMap((r: any) => r.host))
-  )
-})
+listIngresses()
+  .then(async ingresses => {
+    console.info(
+      'Hosts to check:',
+      ingresses.flatMap(i => i.spec?.rules?.map(r => r?.host))
+    )
+  })
+  .catch(console.error)
