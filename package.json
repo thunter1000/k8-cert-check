@@ -24,5 +24,8 @@
     "pretest": "npm run compile",
     "test": "jest",
     "posttest": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }
