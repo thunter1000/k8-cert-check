@@ -37,7 +37,7 @@ export function getAxios(): AxiosInstance {
         ca: requestOpts.ca,
         cert: requestOpts.cert,
         key: requestOpts.key,
-        rejectUnauthorized: requestOpts.strictSSL,
+        rejectUnauthorized: !(requestOpts.strictSSL || true),
       }),
       headers: requestOpts.headers,
       auth: requestOpts.auth,
