@@ -25,7 +25,7 @@ export function getAxios(): AxiosInstance {
       key?: Buffer | undefined
       strictSSL?: boolean | undefined
       auth?: {username: string; password: string} | undefined
-      headers?: {[key: string]: any} | undefined
+      headers?: {[key: string]: string} | undefined
     } = {
       url: baseURL,
     }
